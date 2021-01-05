@@ -19,7 +19,7 @@ db.once("open", function() {
   console.log("Connection To MongoDB Atlas Successful!");
 });
 
-app.get("/player-data/:id", async (request, response) => {
+app.get("/", async (request, response) => {
   async function playerDataCheck() {
     const playerData = await playerModel.findOne({ userID: `${request.params.id}` })
     // We use the mongoose findOne method to check if a record exists
@@ -44,7 +44,7 @@ app.get("/player-data/:id", async (request, response) => {
 // Finally we return the response from the async function!
 });
 
-app.post("/player-data/update-info/:id", async (request, response) => {
+app.post("/", async (request, response) => {
   var Places = [];
   console.log(request.body.WhitelistedPlaces)
   for(var i=1;request.body.WhitelistedPlaces.length;i++){Places.push(request.body.WhitelistedPlaces[i])}
