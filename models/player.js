@@ -9,10 +9,10 @@ const Schema = mongoose.Schema
 const schema = new Schema({
    userID: String,
    Whitelisted: Boolean,
-   Banned: Boolean
+   Banned: Boolean,
+   WhitelistedPlaces: Array
 })
-// We use the new operator to create a new Schema and we define the fields,
-// For this one I am just going to use User Id and coins, you can add more.
+// We use the new operator to create a new Schema and we define the fields.
 // Also for valid data types you can check the mongoose docs (string, number etc)
 
 const Player = mongoose.model('Player', schema)
