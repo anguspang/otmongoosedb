@@ -10,8 +10,8 @@ app.use(bodyparser.text());
 app.use(bodyparser.json());
 app.use(bodyparser.raw());
 
-app.listen(PORT, () => {
-  console.log(`Our app is running on port ${ PORT }`);
+const listener = app.listen(PORT||3000, () => {
+  console.log("Your app is listening on port " + listener.address().port);
 });
 
 
@@ -23,7 +23,7 @@ db.once("open", function() {
   console.log("Connection To MongoDB Atlas Successful!");
 });
 
-app.get("/", async (request, response) => {
+app.get("/plrdata/:id", async (request, response) => {
   async function playerDataCheck() {
     const playerData = await playerModel.findOne({ userID: `${request.params.id}` })
     // We use the mongoose findOne method to check if a record exists
@@ -48,7 +48,7 @@ app.get("/", async (request, response) => {
 // Finally we return the response from the async function!
 });
 
-app.post("/", async (request, response) => {
+app.post("/plrdata/update-info/:id", async (request, response) => {
   var Places = [];
   console.log(request.body.WhitelistedPlaces)
   for(var i=1;request.body.WhitelistedPlaces.length;i++){Places.push(request.body.WhitelistedPlaces[i])}
