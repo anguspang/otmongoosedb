@@ -5,11 +5,10 @@ require('./models/player')
 const playerModel = mongoose.model('Player')
 mongoose.connect(`mongodb+srv://GlitchServer:Nth2KM3JYmLkU8SO@otwhitelistdb.cui00.mongodb.net/OTRBXDB?retryWrites=true&w=majority`, {useNewUrlParser: true});
 
-const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
-app.use(bodyParser.json());
+app.use(bodyparser.urlencoded({ extended: true }));
+app.use(bodyparser.text());
+app.use(bodyparser.json());
+app.use(bodyparser.raw());
 
 app.listen(PORT, () => {
   console.log(`Our app is running on port ${ PORT }`);
