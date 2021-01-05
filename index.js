@@ -11,6 +11,11 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
+app.listen(PORT, () => {
+  console.log(`Our app is running on port ${ PORT }`);
+});
+
+
 var db = mongoose.connection;
 
 db.on("error", console.error.bind(console, "connection error:"));
@@ -55,7 +60,4 @@ app.post("/", async (request, response) => {
   );
   response.send("Updated Database.");
   // Just a response.
-});
-app.listen(PORT, () => {
-    console.log(`Our app is running on port ${ PORT }`);
 });
