@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require('mongoose')
 require('./models/player')
 const playerModel = mongoose.model('Player')
-mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@otwhitelistdb.cui00.mongodb.net/OTRBXDB?retryWrites=true&w=majority`, {useNewUrlParser: true});
+mongoose.connect(`mongodb+srv://GlitchServer:Nth2KM3JYmLkU8SO@otwhitelistdb.cui00.mongodb.net/OTRBXDB?retryWrites=true&w=majority`, {useNewUrlParser: true});
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({
@@ -56,7 +56,6 @@ app.post("/player-data/update-info/:id", async (request, response) => {
   response.send("Updated Database.");
   // Just a response.
 });
-
-const listener = app.listen(process.env.PORT, () => {
-  console.log("Your app is listening on port " + listener.address().port);
+app.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
 });
